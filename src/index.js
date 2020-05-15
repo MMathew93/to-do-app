@@ -1,5 +1,7 @@
-//import { functions } from 'other JS'
+import { projectInitiator, projectCreator } from './project-creator'
 
-//function
+const addProject_button= document.getElementById('addProject')
+addProject_button.addEventListener('click', projectInitiator)
 
-alert('is bootstrap not working as intended?')
+const userInputValue= document.getElementById('form')
+userInputValue.addEventListener('submit', projectCreator)

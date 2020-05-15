@@ -3,6 +3,8 @@ body {
     font-family: Varela Round ,Arial, Helvetica, sans-serif;
 }
 
+button:focus {outline:0;}
+
 /*############
 HEADER CONTENT
 ############*/
@@ -97,4 +99,52 @@ TAB CONTENT
 #star {
     color: rgb(255, 219, 0);
     margin-left: 4px;
+}
+
+.button-tab {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#addProject {
+    padding: 10px 12px;
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 50%;
+    border: none;
+}
+
+#addProject:hover {
+    cursor: pointer;
+    background: rgb(25, 121, 218);
+}
+
+#cancelProject {
+    padding: 10px 12px;
+    color: white;
+    background-color: rgb(250, 39, 32);
+    transform: rotate(45deg);
+    border-radius: 50%;
+    border: none;
+}
+
+#cancelProject:hover {
+    cursor: pointer;
+    background: rgb(218, 31, 25);
+}
+
+.projectInput {
+    display: flex;
+    justify-content: center;
+}
+
+#userInput {
+    width: 75%;
+    height: 1.5rem;
+    padding-left: 15px;
+}
+
+.hidden {
+    display: none;
 }
