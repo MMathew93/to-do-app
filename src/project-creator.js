@@ -1,36 +1,43 @@
+import {createElement, getElement, getId, removeClass, addClass, append} from './dom-creator'
+
 const projectInitiator= function() {
-    let projectInput= document.querySelector('.projectInput')
-    let userInput= document.getElementById('userInput')
-    let addProject= document.getElementById('addProject')
-    let button= document.querySelector('button')
-    if (projectInput.classList.contains("hidden")) {
-        projectInput.classList.remove("hidden");
-        button.removeAttribute('addProject')
-        button.id= "cancelProject"
+    let projectInput= getElement('.projectInput')
+    let userInput= getId('userInput')
+    let button= getElement('button')
+    if (projectInput.classList.contains('hidden')) {
+        removeClass(projectInput, 'hidden');
+        removeClass(button, 'addProject')
+        button.id= 'cancelProject'
         userInput.value= ''
       } else {
         userInput.value= ''
-        projectInput.classList.add("hidden");
-        button.removeAttribute('cancelProject')
+        addClass(projectInput, 'hidden');
+        removeClass(button, 'cancelProject')
         button.id= 'addProject'
       }
 };
 
 const projectCreator= function() {
-  let leftBlock= document.getElementById('left-block')
-  let userInput= document.getElementById('userInput')
-  let projectTab=  document.createElement('div')
-  let buttonTab= document.querySelector('.button-tab')
-      projectTab.className='project-tab'
-  let i= document.createElement('i')
-      i.id="today"
-      i.className="fas fa-calendar-check"
-  let p= document.createElement('p')
+  const leftBlock= getId('left-block')
+  const userInput= getId('userInput')
+  const buttonTab= document.querySelector('.button-tab')
+  const projectTab= createElement('div', {id: userInput.value, class: 'project-tab'})
+  const projectTag= createElement('div', {class: 'projectTag'})
+  const i= createElement('i', {id: 'today', class:'fas fa-calendar-check'})
+  const trash= createElement('i', {id: 'trash', class:'fas fa-trash-alt'})
+  const p= createElement('p')
       p.innerHTML= userInput.value
-      projectTab.appendChild(i)
-      projectTab.appendChild(p)
+  let x=[i,p]
+  append(projectTag, x)
+  let y=[projectTag, trash]
+  append(projectTab, y)
       leftBlock.insertBefore(projectTab, buttonTab)
    projectInitiator()
 }
 
-export {projectInitiator, projectCreator}
+const projectRemove= function() {
+  let el= document.getElementById(this)
+  el.parentNode.removeChild( el );
+}
+
+export {projectInitiator, projectCreator, projectRemove}

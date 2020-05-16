@@ -34,7 +34,7 @@ HEADER CONTENT
     height: 40px;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 850px) {
     #headerbox {
         flex-direction: column;
     }
@@ -44,6 +44,28 @@ HEADER CONTENT
         margin: 0;
         flex-grow: 1;
         padding-bottom: 20px;
+    }
+
+    #left-block {
+        min-width: 50%;
+        background-color: rgb(30, 144, 255, .05);
+        border-right: 2px solid rgb(67, 70, 75, .3);
+        height: 900px;
+    }
+    
+    #right-block {
+        min-width: 50%;
+        background-color: white;
+    }
+  }
+
+  @media only screen and (max-width: 340px) {
+      .project-tab {
+        padding: 0 !important;
+        justify-content: center;
+      }
+      .project-tab > p {
+        display: none;
     }
   }
 
@@ -70,7 +92,7 @@ main {
 /*############
 TAB CONTENT
 ############*/
-.project-tab {
+.default-tab {
     display: flex;
     align-items: center;
     padding: 1% 0 0 15%;
@@ -78,7 +100,7 @@ TAB CONTENT
     color: rgb(67, 70, 75);
 }
 
-.project-tab:hover {
+.default-tab:hover {
     background-color: white;
     cursor: pointer;
 }
@@ -108,7 +130,7 @@ TAB CONTENT
 }
 
 #addProject {
-    padding: 10px 12px;
+    padding: 6px 8px;
     color: white;
     background-color: dodgerblue;
     border-radius: 50%;
@@ -121,7 +143,7 @@ TAB CONTENT
 }
 
 #cancelProject {
-    padding: 10px 12px;
+    padding: 6px 8px;
     color: white;
     background-color: rgb(250, 39, 32);
     transform: rotate(45deg);
@@ -147,4 +169,36 @@ TAB CONTENT
 
 .hidden {
     display: none;
+}
+
+/*############
+New Added Projects
+############*/
+
+.project-tab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 0 0 15%;
+    font-size: 20px;
+    color: rgb(67, 70, 75);
+}
+
+.project-tab:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.projectTag {
+    display: flex;
+    align-items: center;
+}
+
+#trash {
+    color: black;
+    margin-right: 1.5rem;
+}
+
+#trash:hover {
+    color: rgb(155,17,30);
 }
