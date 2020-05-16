@@ -25,6 +25,7 @@ const projectCreator= function() {
   const projectTag= createElement('div', {class: 'projectTag'})
   const i= createElement('i', {id: 'today', class:'fas fa-calendar-check'})
   const trash= createElement('i', {id: 'trash', class:'fas fa-trash-alt'})
+        trash.addEventListener('click', projectRemove)
   const p= createElement('p')
       p.innerHTML= userInput.value
   let x=[i,p]
@@ -35,9 +36,8 @@ const projectCreator= function() {
    projectInitiator()
 }
 
-const projectRemove= function() {
-  let el= document.getElementById(this)
-  el.parentNode.removeChild( el );
+const projectRemove= function(e) {
+  e.target.parentNode.remove();
 }
 
 export {projectInitiator, projectCreator, projectRemove}

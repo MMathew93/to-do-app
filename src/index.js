@@ -1,10 +1,8 @@
-import { projectInitiator, projectCreator, projectRemove } from './project-creator'
+import { projectInitiator, projectCreator} from './project-creator'
+import {getId} from './dom-creator'
 
-const addProject_button= document.getElementById('addProject')
+const addProject_button= getId('addProject')
 addProject_button.addEventListener('click', projectInitiator)
 
-const userInputValue= document.getElementById('form')
+const userInputValue= getId('form')
 userInputValue.addEventListener('submit', projectCreator)
-
-const remove= document.getElementById('trash')
-trash.addEventListener('click', projectRemove)
