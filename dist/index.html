@@ -22,15 +22,15 @@
     </header>
     <main class="container-xl">
       <div id="left-block">
-        <div class="default-tab">
+        <div class="default-tab select active">
           <i id="today" class="fas fa-calendar-check"></i>
           <p>Today</p>
         </div>
-        <div class="default-tab">
+        <div class="default-tab select">
           <i id="week" class="fas fa-calendar-alt"></i>
           <p>Overview (Next 7 Days)</p>
         </div>
-        <div class="default-tab">
+        <div class="default-tab select">
           <i id="star" class="fas fa-star"></i>
           <p>Important</p>
         </div>
@@ -40,16 +40,24 @@
           </button>
         </div>
         <form id="form" onsubmit="return false">
-        <div class="projectInput hidden">
-          <input id="userInput" type="text" placeholder= "Project Name" required>
-        </div>
-      </form>
+          <div class="projectInput hidden">
+            <input id="userInput" type="text" placeholder="Project Name" required>
+          </div>
+        </form>
       </div>
-  </div>
-  <div id="right-block">
-
-  </div>
-  </main>
+      <div id="right-block">
+        <h1 id="project-name">Today</h1>
+        <div id="toDo-List"></div>
+        <div class="toDo-button">
+          <button id="addToDo">
+            <i class="fas fa-plus"></i>
+          </button>
+          <div class="toDoInput">
+            <input id="userInput2" type="text" placeholder="Add Task" required>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
   <script src="https://kit.fontawesome.com/74ee1387d7.js" crossorigin="anonymous"></script>
   <script src="main.js"></script>

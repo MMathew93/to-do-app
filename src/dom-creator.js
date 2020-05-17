@@ -16,6 +16,8 @@ const removeClass = (element, ...attribute) => element.classList.remove(...attri
 
 const addClass = (element, ...attribute) => element.classList.add(...attribute)
 
+const getElements = (elements) => document.querySelectorAll(elements);
+
 const append = function (parent, children) {
     children.forEach(x=> parent.appendChild(x))
 }
@@ -26,5 +28,6 @@ export {
     getId,
     removeClass,
     addClass,
+    getElements,
     append
 }

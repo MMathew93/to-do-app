@@ -1,9 +1,11 @@
 body {
     margin: 0;
-    font-family: Varela Round ,Arial, Helvetica, sans-serif;
+    font-family: Varela Round, Arial, Helvetica, sans-serif;
 }
 
-button:focus {outline:0;}
+button:focus {
+    outline: 0;
+}
 
 /*############
 HEADER CONTENT
@@ -52,22 +54,23 @@ HEADER CONTENT
         border-right: 2px solid rgb(67, 70, 75, .3);
         height: 900px;
     }
-    
+
     #right-block {
         min-width: 50%;
         background-color: white;
     }
-  }
+}
 
-  @media only screen and (max-width: 340px) {
-      .project-tab {
+@media only screen and (max-width: 340px) {
+    .project-tab {
         padding: 0 !important;
         justify-content: center;
-      }
-      .project-tab > p {
+    }
+
+    .project-tab>p {
         display: none;
     }
-  }
+}
 
 /*############
 BODY CONTENT
@@ -87,6 +90,10 @@ main {
 #right-block {
     width: 80%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3.5rem;
 }
 
 /*############
@@ -100,6 +107,7 @@ TAB CONTENT
     color: rgb(67, 70, 75);
 }
 
+.active,
 .default-tab:hover {
     background-color: white;
     cursor: pointer;
@@ -184,6 +192,7 @@ New Added Projects
     color: rgb(67, 70, 75);
 }
 
+.active,
 .project-tab:hover {
     background-color: white;
     cursor: pointer;
@@ -200,5 +209,53 @@ New Added Projects
 }
 
 #trash:hover {
-    color: rgb(155,17,30);
+    color: rgb(155, 17, 30);
+}
+
+/*############
+To Do Section
+############*/
+
+/*
+#toDo-List {
+
+}
+*/
+
+.toDo-button {
+    padding: 20px 20px 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.toDo-button > p {
+    margin: 1rem;
+    font-size: 1.3rem;
+    color: rgb(127, 133, 141, 1);
+}
+
+#addToDo {
+    padding: 6px 8px 6px 0;
+    color: rgb(127, 133, 141, 1);
+    border: none;
+    background-color: white;
+}
+
+#addToDo:hover {
+    cursor: pointer;
+    color: rgb(89, 93, 100);
+}
+
+.toDoInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#userInput2 {
+    height: 2rem;
+    padding-left: 15px;
+    font-size: 1.3rem;
+    border: 0;
+    outline: none;
 }
