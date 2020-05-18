@@ -1,4 +1,4 @@
-import { projectInitiator, projectCreator} from './project-creator'
+import { projectInitiator, projectCreator, projectDisplayer} from './project-creator'
 import {getId} from './dom-creator'
 
 const addProject_button= getId('addProject')
@@ -9,3 +9,7 @@ userInputValue.addEventListener('submit', projectCreator)
 
 //const addToDo_button= getId('addToDo')
 //addToDo_button.addEventListener('click', )
+
+
+
+//userInput2 in project creater/project display, required tag may need to be addressed
