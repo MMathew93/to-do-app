@@ -30,8 +30,7 @@ const projectCreator = function () {
   const userInput = getId('userInput')
   const buttonTab = document.querySelector('.button-tab')
   const projectTab = createElement('div', {
-    id: userInput.value,
-    class: 'project-tab select'
+    class: `${userInput.value} project-tab select`
   })
   const projectTag = createElement('div', {
     class: 'projectTag'
@@ -41,7 +40,7 @@ const projectCreator = function () {
     class: 'fas fa-calendar-check'
   })
   const trash = createElement('i', {
-    id: 'trash',
+    id: `${userInput.value}`,
     class: 'fas fa-trash-alt'
   })
   trash.addEventListener('click', projectRemove)
@@ -52,12 +51,11 @@ const projectCreator = function () {
   let y = [projectTag, trash]
   append(projectTab, y)
   leftBlock.insertBefore(projectTab, buttonTab)
-//#############################################################################*/
-//userInput2 in project creater/project display, required tag may need to be addressed
+  //#############################################################################*/
+  //userInput2 in project creater/project display, required tag may need to be addressed
   const rightBlock = getId('right-block')
   const projectDisplay = createElement('div', {
-    id: userInput.value,
-    class: "display select active"
+    class: `${userInput.value} display select active`
   })
   const projectTitle = createElement('h1', {
     class: "project-title"
@@ -111,11 +109,9 @@ const projectHighlight = function () {
 projectHighlight()
 
 const projectRemove = function (e) {
-  console.log(e.target.parentNode.id)
-  const rightBlock = getId('right-block')
-  let x= e.target.parentNode.id
-  e.target.parentNode.remove();
-  //rightBlock.removeChild(x)
+  let x = e.target.parentNode.classList[0]
+  const elements = document.getElementsByClassName(x);
+  while (elements.length > 0) elements[0].remove();
 }
 
 export {
