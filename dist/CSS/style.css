@@ -176,7 +176,7 @@ TAB CONTENT
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /*############

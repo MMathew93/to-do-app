@@ -92,17 +92,23 @@ const projectCreator = function () {
   append(rightBlock, b)
 
   projectInitiator()
+  projectHighlight()
 }
 
 const projectHighlight = function () {
   const leftBlock = getId('left-block')
-  const highLight = leftBlock.getElementsByClassName('select')
-  for (var i = 0; i < highLight.length; i++) {
+  const rightBlock = getId('right-block')
+  const highLight = getElements(leftBlock, 'select')
+  let i= 0
+  while (i < highLight.length) {
     highLight[i].addEventListener("click", function () {
-      let current = document.getElementsByClassName("active");
+      let current = getElements(document, "active");
+      let display = getElements(document, "active") 
       current[0].className = current[0].className.replace(" active", "");
+      display[0].className = display[0].className.replace(" active", " hidden")
       this.className += " active";
     });
+    i++
   }
 }
 
@@ -110,7 +116,7 @@ projectHighlight()
 
 const projectRemove = function (e) {
   let x = e.target.parentNode.classList[0]
-  const elements = document.getElementsByClassName(x);
+  const elements = getElements(document, x);
   while (elements.length > 0) elements[0].remove();
 }
 
