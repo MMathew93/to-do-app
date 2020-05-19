@@ -55,7 +55,7 @@ const projectCreator = function () {
   //userInput2 in project creater/project display, required tag may need to be addressed
   const rightBlock = getId('right-block')
   const projectDisplay = createElement('div', {
-    class: `${userInput.value} display select active`
+    class: `${userInput.value} display select hidden`
   })
   const projectTitle = createElement('h1', {
     class: "project-title"
@@ -96,19 +96,20 @@ const projectCreator = function () {
 }
 
 const projectHighlight = function () {
-  const leftBlock = getId('left-block')
-  const rightBlock = getId('right-block')
-  const highLight = getElements(leftBlock, 'select')
-  let i= 0
-  while (i < highLight.length) {
-    highLight[i].addEventListener("click", function () {
-      let current = getElements(document, "active");
-      let display = getElements(document, "active") 
-      current[0].className = current[0].className.replace(" active", "");
-      display[0].className = display[0].className.replace(" active", " hidden")
-      this.className += " active";
-    });
-    i++
+  const leftBlock= getId('left-block')
+  const highLightTab= getElements(leftBlock, "select")
+  const rightBlock= getId('right-block')
+  const displayProject= getElements(rightBlock, "select")
+  var active
+  for(let i= 0; i< highLightTab.length; i++) {
+    highLightTab[i].addEventListener('click', function(evt){
+      if (active) {
+        active.classList.remove('active')
+      }
+      console.log(evt.currentTarget)
+      evt.currentTarget.classList.add('active')
+      active= evt.currentTarget
+    })
   }
 }
 
