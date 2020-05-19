@@ -96,19 +96,20 @@ const projectCreator = function () {
 }
 
 const projectHighlight = function () {
-  const leftBlock= getId('left-block')
-  const highLightTab= getElements(leftBlock, "select")
-  const rightBlock= getId('right-block')
-  const displayProject= getElements(rightBlock, "select")
-  var active
-  for(let i= 0; i< highLightTab.length; i++) {
-    highLightTab[i].addEventListener('click', function(evt){
-      if (active) {
-        active.classList.remove('active')
-      }
-      console.log(evt.currentTarget)
-      evt.currentTarget.classList.add('active')
-      active= evt.currentTarget
+  const leftBlock = getId('left-block')
+  const rightBlock = getId('right-block')
+  const getAllLeft = getElements(leftBlock, 'select')
+  const getAllRight = getElements(rightBlock, 'select')
+  for (let i = 0; i < getAllLeft.length; i++) {
+    getAllLeft[i].addEventListener('click', function () {
+      Array.prototype.forEach.call(getAllLeft, function (node) {
+        node.classList.remove('active')
+      });
+      this.classList.add('active')
+      Array.prototype.forEach.call(getAllRight, function (node) {
+        node.classList.replace('active', 'hidden')
+      });
+      getAllRight[i].classList.replace('hidden', 'active')
     })
   }
 }
