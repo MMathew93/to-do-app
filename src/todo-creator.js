@@ -1,20 +1,29 @@
 import {
     createElement,
-    getId
+    getId,
+    getElements
 } from './dom-creator'
 
 const createToDo = function () {
-    const toDoList = getId('toDo-List')
-    const userInput = getId('userInput2')
-    const newToDo = createElement('div', {
-        id: `${userInput.value}`,
-        class: "todo"
-    })
-    const p= createElement('p')
-    p.innerHTML= userInput.value
-    newToDo.appendChild(p)
-    toDoList.appendChild(newToDo)
-    userInput.value= ''
+    //const toDoList = document.getElementByClassName('toDo-List')
+    const rightBlock = getId('right-block')
+    const userInput = getElements(rightBlock, 'userInput2')
+    const toDoList= getElements(rightBlock, 'toDo-List')
+    for(let i= 0; i<userInput.length; i++) {
+        if(userInput[i].parentNode.parentNode.parentNode.classList.contains('active')) {
+            const newToDo = createElement('div', {
+                id: `${userInput[i].value}`,
+                class: "todo"
+            })
+            const p= createElement('p')
+            p.innerHTML= userInput[i].value
+            newToDo.appendChild(p)
+            console.log(toDoList[i])
+            console.log(userInput[i].parentNode.parentNode.parentNode)
+            toDoList[i].appendChild(newToDo)
+            userInput[i].value= ''
+        }
+    }
 }
 
 export {

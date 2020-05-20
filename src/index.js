@@ -3,7 +3,8 @@ import {
     projectCreator
 } from './project-creator'
 import {
-    getId
+    getId,
+    getElements
 } from './dom-creator'
 import {
     createToDo
@@ -15,9 +16,10 @@ addProject_button.addEventListener('click', projectInitiator)
 const userInputValue = getId('form')
 userInputValue.addEventListener('submit', projectCreator)
 
-const button= document.getElementsByClassName('addToDo')
+const button= getElements(document, 'addToDo')
 //(element, ...attribute) => element.getElementsByClassName(...attribute)
 for(var i=0; i<button.length; i++){
+    console.log(button)
     button[i].addEventListener("click", createToDo)
 }
 

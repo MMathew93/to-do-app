@@ -281,7 +281,7 @@ To Do Section
     align-items: center;
 }
 
-#userInput2 {
+.userInput2 {
     height: 2rem;
     padding-left: 15px;
     font-size: 1.3rem;

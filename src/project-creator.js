@@ -68,7 +68,7 @@ const projectCreator = function () {
     class: "toDo-button"
   })
   const addToDo = createElement('button', {
-    id: "addToDo"
+    class: "addToDo"
   })
   const add = createElement('i', {
     class: "fas fa-plus"
@@ -78,7 +78,7 @@ const projectCreator = function () {
     class: "toDoInput"
   })
   const userInput2 = createElement('input', {
-    id: "userInput2",
+    class: "userInput2",
     type: "text",
     placeholder: "Add Task",
     required: true
