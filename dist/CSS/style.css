@@ -242,10 +242,10 @@ To Do Section
 }
 
 .todo {
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.todo > p {
+.todo>p {
     font-size: 30px;
     border-bottom: 2px solid rgb(67, 70, 75, .3);
 }
@@ -257,7 +257,7 @@ To Do Section
     justify-content: center;
 }
 
-.toDo-button > p {
+.toDo-button>p {
     margin: 1rem;
     font-size: 1.3rem;
     color: rgb(127, 133, 141, 1);

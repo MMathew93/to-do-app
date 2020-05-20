@@ -8,6 +8,10 @@ import {
   append
 } from './dom-creator'
 
+import {
+  createToDo
+} from './todo-creator'
+
 const projectInitiator = function () {
   const projectInput = getElement('.projectInput')
   const userInput = getId('userInput')
@@ -62,7 +66,7 @@ const projectCreator = function () {
   })
   projectTitle.innerHTML = userInput.value
   const toDoList = createElement('div', {
-    id: "toDo-List"
+    class: "toDo-List"
   })
   const toDoButton = createElement('div', {
     class: "toDo-button"
@@ -93,6 +97,12 @@ const projectCreator = function () {
 
   projectInitiator()
   projectHighlight()
+
+  const button = getElements(document, 'addToDo')
+  //(element, ...attribute) => element.getElementsByClassName(...attribute)
+  for (let i = 0; i < button.length; i++) {
+    button[i].addEventListener("click", createToDo)
+  }
 }
 
 const projectHighlight = function () {
