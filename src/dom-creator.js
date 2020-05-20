@@ -19,7 +19,7 @@ const addClass = (element, ...attribute) => element.classList.add(...attribute)
 const getElements = (element, ...attribute) => element.getElementsByClassName(...attribute)
 
 const append = function (parent, children) {
-    children.forEach(x=> parent.appendChild(x))
+    children.forEach(x => parent.appendChild(x))
 }
 
 export {
