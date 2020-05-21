@@ -4,24 +4,39 @@ import {
 } from './project-creator'
 import {
     getId,
-    getElements
+    getElements,
+    getElement
 } from './dom-creator'
 import {
+    showToDoForm,
+    hideToDoForm,
+    today,
     createToDo
 } from './todo-creator'
 
-import Todo from './todo-factory'
+//import Todo from './todo-factory'
 
 const addProject_button = getId('addProject')
 addProject_button.addEventListener('click', projectInitiator)
 
-const userInputValue = getId('form')
+const userInputValue = getId('project-form')
 userInputValue.addEventListener('submit', projectCreator)
 
 const button = getElements(document, 'addToDo')
 for (let i = 0; i < button.length; i++) {
-    button[i].addEventListener("click", createToDo)
+    button[i].addEventListener("click", function () {
+        showToDoForm()
+        today()
+    });
 }
+
+const cancel = getElement('.cancel')
+cancel.addEventListener('click', hideToDoForm)
+
+const submit = getElement('.submit')
+submit.addEventListener('click', createToDo)
+
+
 
 
 /*

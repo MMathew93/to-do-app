@@ -90,8 +90,8 @@
           <br>
           <div class="details">
             <div id="dueDate">
-              <label for="dueDate">Due Date</label>
-              <input type="text" name="dueDate" id="dueDate-input" class="to-doInput" value>
+              <label for="dueDate">Due Date:</label>
+              <input id="date" type="date" name="due-date" min="2020-01-01" max="2030-12-31">
             </div>
             <div id="priority">
               <label for="priority">Priority:</label>
@@ -103,7 +103,7 @@
             </div>
           </div>
           <br>
-          <textarea name="notes" rows="10" cols="30" placeholder="Description of task..."></textarea>
+          <textarea class="textarea" name="notes" rows="10" cols="30" placeholder="Description of task..."></textarea>
           <br>
           <div class="taskComplete">
             <div id="completed">

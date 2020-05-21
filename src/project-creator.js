@@ -9,7 +9,8 @@ import {
 } from './dom-creator'
 
 import {
-  createToDo
+  createToDo,
+  today
 } from './todo-creator'
 
 const projectInitiator = function () {
@@ -100,9 +101,13 @@ const projectCreator = function () {
 
   const button = getElements(document, 'addToDo')
   for (let i = 0; i < button.length; i++) {
-    button[i].addEventListener("click", createToDo)
+    button[i].addEventListener("click", function () {
+      toDoForm()
+      today()
+    });
   }
 }
+
 
 const projectHighlight = function () {
   const leftBlock = getId('left-block')

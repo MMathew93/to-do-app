@@ -1,4 +1,4 @@
-const Todo= (title, dueDate, notes, checkList, priority)=> {
+const ToDo = (title, dueDate, notes, checkList, priority) => {
 
     return {
         title,
@@ -9,4 +9,4 @@ const Todo= (title, dueDate, notes, checkList, priority)=> {
     }
 }
 
-export default Todo
+export default ToDo
