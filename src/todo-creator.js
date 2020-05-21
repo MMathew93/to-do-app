@@ -4,7 +4,7 @@ import {
     getElements
 } from './dom-creator'
 
-const createToDo = function () {
+/*const createToDo = function () {
     //const toDoList = document.getElementByClassName('toDo-List')
     const rightBlock = getId('right-block')
     const userInput = getElements(rightBlock, 'userInput2')
@@ -22,6 +22,10 @@ const createToDo = function () {
             userInput[i].value = ''
         }
     }
+}*/
+
+const toDoForm = function () {
+    
 }
 
 export {

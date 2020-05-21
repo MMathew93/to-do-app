@@ -99,7 +99,6 @@ const projectCreator = function () {
   projectHighlight()
 
   const button = getElements(document, 'addToDo')
-  //(element, ...attribute) => element.getElementsByClassName(...attribute)
   for (let i = 0; i < button.length; i++) {
     button[i].addEventListener("click", createToDo)
   }

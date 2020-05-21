@@ -39,7 +39,7 @@
             <i class="fas fa-plus"></i>
           </button>
         </div>
-        <form id="form" onsubmit="return false">
+        <form id="project-form" onsubmit="return false">
           <div class="projectInput hidden">
             <input id="userInput" type="text" placeholder="Project Name" required>
           </div>
@@ -82,6 +82,48 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="form-container hidden">
+        <form id="todo-form">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title-input" class="to-doInput" value>
+          <br>
+          <div class="details">
+            <div id="dueDate">
+              <label for="dueDate">Due Date</label>
+              <input type="text" name="dueDate" id="dueDate-input" class="to-doInput" value>
+            </div>
+            <div id="priority">
+              <label for="priority">Priority:</label>
+              <select id="priority-levels" name="priority-levels">
+                <option value="low" selected>Low</option>
+                <option value="medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <textarea name="notes" rows="10" cols="30" placeholder="Description of task..."></textarea>
+          <br>
+          <div class="taskComplete">
+            <div id="completed">
+              <input type="radio" name="completed" id="yes" value=true>
+              <label for="yes">Task Complete</label>
+            </div>
+            <br>
+            <div id="notcompleted">
+              <input type="radio" name="completed" id="no" value=false checked>
+              <label for="no">Task Ongoing</label>
+              <br>
+            </div>
+          </div>
+          <br>
+          <div class="submission">
+            <button type="button" class="submit">submit</button>
+            <span style="display: none;">*All fields are mandatory</span>
+            <button type="button" class="cancel">Cancel</button>
+          </div>
+        </form>
       </div>
     </main>
   </div>

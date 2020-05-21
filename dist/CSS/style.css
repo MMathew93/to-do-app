@@ -288,3 +288,45 @@ To Do Section
     border: 0;
     outline: none;
 }
+
+/*############
+To Do Form/Obj creator
+############*/
+.form-container {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#todo-form {
+    /*display: none;*/
+    margin: 15% auto;
+    width: 25%;
+    padding: 25px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+.taskComplete {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.submission {
+    margin: auto;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+textarea {
+    padding: 5px;
+}
