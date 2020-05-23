@@ -8,7 +8,9 @@ import {
 
 import ToDo from './todo-factory'
 
+let allToDo= []
 
+//toggles the form being shown and hidden for user submission
 const showToDoForm = function () {
     const formContainer = getElement('.form-container')
     removeClass(formContainer, 'hidden')
@@ -21,6 +23,7 @@ const hideToDoForm = function () {
     clear()
 }
 
+//clears user input after submission or clear
 function clear() {
     const titleInput = getId('title-input')
     const textarea = getElement('.textarea')
@@ -28,6 +31,7 @@ function clear() {
     textarea.value = ""
 }
 
+//creates and appends user created todo
 const createToDo = function () {
     const titleInput = getId('title-input')
     const textarea = getElement('.textarea')
@@ -38,26 +42,42 @@ const createToDo = function () {
     let newToDo = ToDo(titleInput.value, textarea.value, date.value, priority.value, yes.value, no.value);
     const rightBlock = getId('right-block')
     const toDoList = getElements(rightBlock, 'toDo-List')
-    console.log(toDoList[0].parentNode)
+    
     for (let i = 0; i < toDoList.length; i++) {
         if (toDoList[i].parentNode.classList.contains('active')) {
-            console.log(newToDo)
-            /*const newToDo = createElement('div', {
-                id: `${userInput[i].value}`,
-                class: "todo"
-            })
-            const p = createElement('p')
-            p.innerHTML = userInput[i].value
-            newToDo.appendChild(p)
-            toDoList[i].appendChild(newToDo)
-            userInput[i].value = ''
-        }*/
+            allToDo.push(newToDo)
         }
+        render()
         clear();
         event.preventDefault();
     }
 }
 
+const render= function () {
+    let todoList= document.querySelector('.toDo-List')
+    todoList = JSON.parse(localStorage.getItem('todoList'))
+    let innerToDo= ''
+    for (let i = 0; i < todoList.length; i++) {
+        innerToDo += `
+          <div class="toDo" id="${i}">
+              <div class="toDo-name">
+                  <h2>${todoList[i].titleInput}</h2>
+              </div>
+              <div class="toDo-info">
+                  <h3>${todoList[i].date}</h3>
+                  <h4>${todoList[i].priority} pages</h4>
+                  <h3>${todoList[i].textarea}</h3>
+          </div>
+          
+          `;
+          
+      }
+      todoList.innerHTML = innerToDo;
+      console.log(allToDo)
+    }
+
+
+//non-working auto date setter
 const today = function () {
     var date = getId('today');
     var today = new Date();
@@ -71,23 +91,3 @@ export {
     createToDo,
     today
 }
-
-/*const createToDo = function () {
-    //const toDoList = document.getElementByClassName('toDo-List')
-    const rightBlock = getId('right-block')
-    const userInput = getElements(rightBlock, 'userInput2')
-    const toDoList = getElements(rightBlock, 'toDo-List')
-    for (let i = 0; i < userInput.length; i++) {
-        if (userInput[i].parentNode.parentNode.parentNode.classList.contains('active')) {
-            const newToDo = createElement('div', {
-                id: `${userInput[i].value}`,
-                class: "todo"
-            })
-            const p = createElement('p')
-            p.innerHTML = userInput[i].value
-            newToDo.appendChild(p)
-            toDoList[i].appendChild(newToDo)
-            userInput[i].value = ''
-        }
-    }
-}*/
