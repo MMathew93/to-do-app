@@ -79,8 +79,11 @@ const projectCreator = function () {
   const add = createElement('i', {
     class: "fas fa-plus"
   })
+  const z= createElement('p') 
+  z.innerHTML= "Add New Task"
+  let zz=[addToDo, z]
   addToDo.appendChild(add)
-  toDoButton.appendChild(addToDo)
+  append(toDoButton, zz)
   let a = [projectTitle, toDoList, toDoButton]
   append(projectDisplay, a)
   let b = [projectDisplay]

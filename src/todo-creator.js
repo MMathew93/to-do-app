@@ -40,7 +40,6 @@ const createToDo = function () {
     let newToDo = ToDo(titleInput.value, date.value, textarea.value, priority.value);
     const rightBlock = getId('right-block')
     const toDoList = getElements(rightBlock, 'toDo-List')
-    console.log(toDoList)
     for (let i = 0; i < toDoList.length; i++) {
         if (toDoList[i].parentNode.classList.contains('active')) {
             allToDo.push(newToDo)
@@ -52,7 +51,7 @@ const createToDo = function () {
 }
 
 const render = function () {
-    const toDoList = getElement('.toDo-List')
+    const toDoList = document.querySelector('.toDo-List')
     let innerToDo = ''
     for (let i = 0; i < allToDo.length; i++) {
         innerToDo += `
@@ -63,11 +62,19 @@ const render = function () {
                   <p class="item notes">${allToDo[i].notes}</p>
                   <p class= "item date">${allToDo[i].dueDate}</p>
                   <p class= "item priority">${allToDo[i].priority}</p>
+                  <button class= "toDo-delete">
+                    <i class= 'fas fa-trash-alt'></i>
+                  </button>
                 </div>
           </div>
           `;
     }
+    
     toDoList.innerHTML = innerToDo;
+    const toDoDelete = getElements(document, 'toDo-delete')
+    for (let i = 0; i < toDoDelete.length; i++) {
+    toDoDelete[i].addEventListener("click", removeToDo)
+    }
 }
 
 /*const importance = function () {
@@ -78,6 +85,13 @@ const render = function () {
     :itemPriority.innerHTML === "medium" ? toDo.style.backgroundColor = 'yellow' : toDo.style.backgroundColor = 'red'
 }*/
 
+function removeToDo(e) {
+    let x= e.target.parentNode.parentNode.parentNode.getAttribute('id')
+    let xx= getId(x)
+    console.log(xx)
+    xx.remove()
+    allToDo.splice(x, 1)
+}
 
 //non-working auto date setter
 const today = function () {
