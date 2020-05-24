@@ -8,7 +8,7 @@ import {
 
 import ToDo from './todo-factory'
 
-let allToDo= []
+let allToDo = []
 
 //toggles the form being shown and hidden for user submission
 const showToDoForm = function () {
@@ -37,44 +37,46 @@ const createToDo = function () {
     const textarea = getElement('.textarea')
     const date = getId('date')
     const priority = getId('priority-levels')
-    const yes = getId('yes')
-    const no = getId('no')
-    let newToDo = ToDo(titleInput.value, textarea.value, date.value, priority.value, yes.value, no.value);
+    let newToDo = ToDo(titleInput.value, date.value, textarea.value, priority.value);
     const rightBlock = getId('right-block')
     const toDoList = getElements(rightBlock, 'toDo-List')
-    
+    console.log(toDoList)
     for (let i = 0; i < toDoList.length; i++) {
         if (toDoList[i].parentNode.classList.contains('active')) {
             allToDo.push(newToDo)
+            render()
         }
-        render()
-        clear();
+        clear()
         event.preventDefault();
     }
 }
 
-const render= function () {
-    let todoList= document.querySelector('.toDo-List')
-    todoList = JSON.parse(localStorage.getItem('todoList'))
-    let innerToDo= ''
-    for (let i = 0; i < todoList.length; i++) {
+const render = function () {
+    const toDoList = getElement('.toDo-List')
+    let innerToDo = ''
+    for (let i = 0; i < allToDo.length; i++) {
         innerToDo += `
           <div class="toDo" id="${i}">
-              <div class="toDo-name">
-                  <h2>${todoList[i].titleInput}</h2>
-              </div>
               <div class="toDo-info">
-                  <h3>${todoList[i].date}</h3>
-                  <h4>${todoList[i].priority} pages</h4>
-                  <h3>${todoList[i].textarea}</h3>
+                  <input type="checkbox" id="accept">
+                  <p class="item title">${allToDo[i].title}</p>
+                  <p class="item notes">${allToDo[i].notes}</p>
+                  <p class= "item date">${allToDo[i].dueDate}</p>
+                  <p class= "item priority">${allToDo[i].priority}</p>
+                </div>
           </div>
-          
           `;
-          
-      }
-      todoList.innerHTML = innerToDo;
-      console.log(allToDo)
     }
+    toDoList.innerHTML = innerToDo;
+}
+
+/*const importance = function () {
+    const itemPriority = document.querySelector('.item priority')
+    const toDo = document.querySelector('.toDo')
+    console.log(toDo)
+    itemPriority.innerHTML === "low" ? toDo.style.backgroundColor = 'dodger blue'
+    :itemPriority.innerHTML === "medium" ? toDo.style.backgroundColor = 'yellow' : toDo.style.backgroundColor = 'red'
+}*/
 
 
 //non-working auto date setter

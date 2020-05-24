@@ -34,7 +34,10 @@ const cancel = getElement('.cancel')
 cancel.addEventListener('click', hideToDoForm)
 
 const submit = getElement('.submit')
-submit.addEventListener('click', createToDo)
+submit.addEventListener('click', function () {
+    createToDo()
+    hideToDoForm()
+});
 
 
 

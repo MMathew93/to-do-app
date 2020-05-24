@@ -234,22 +234,16 @@ Project Display
 To Do Section
 ############*/
 
-#toDo-List {
+.toDo-List {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding-left: 30px;
 }
 
-.todo {
+.toDo {
     cursor: pointer;
 }
-
-.todo>p {
-    font-size: 30px;
-    border-bottom: 2px solid rgb(67, 70, 75, .3);
-}
-
 
 .toDo-button {
     padding: 20px 20px 20px 0;
@@ -303,7 +297,6 @@ To Do Form/Obj creator
 }
 
 #todo-form {
-    /*display: none;*/
     margin: 15% auto;
     width: 25%;
     padding: 25px;
@@ -311,11 +304,6 @@ To Do Form/Obj creator
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-}
-
-.taskComplete {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .submission {
@@ -330,3 +318,26 @@ To Do Form/Obj creator
 textarea {
     padding: 5px;
 }
+
+/*############
+To Do Item Styling
+############*/
+
+.toDo-info {
+    display: flex;
+    align-items: center;
+}
+
+#accept {}
+
+.item {
+    margin: 10px 60px;
+}
+
+.title {}
+
+.notes {}
+
+.date {}
+
+.priority {}

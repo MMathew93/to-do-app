@@ -9,6 +9,8 @@ import {
 } from './dom-creator'
 
 import {
+  showToDoForm,
+  hideToDoForm,
   createToDo,
   today
 } from './todo-creator'
@@ -57,7 +59,6 @@ const projectCreator = function () {
   append(projectTab, y)
   leftBlock.insertBefore(projectTab, buttonTab)
   //#############################################################################*/
-  //userInput2 in project creater/project display, required tag may need to be addressed
   const rightBlock = getId('right-block')
   const projectDisplay = createElement('div', {
     class: `${userInput.value} display select hidden`
@@ -79,18 +80,7 @@ const projectCreator = function () {
     class: "fas fa-plus"
   })
   addToDo.appendChild(add)
-  const toDoInput = createElement('div', {
-    class: "toDoInput"
-  })
-  const userInput2 = createElement('input', {
-    class: "userInput2",
-    type: "text",
-    placeholder: "Add Task",
-    required: true
-  })
-  toDoInput.appendChild(userInput2)
-  let z = [addToDo, toDoInput]
-  append(toDoButton, z)
+  toDoButton.appendChild(addToDo)
   let a = [projectTitle, toDoList, toDoButton]
   append(projectDisplay, a)
   let b = [projectDisplay]
@@ -102,7 +92,7 @@ const projectCreator = function () {
   const button = getElements(document, 'addToDo')
   for (let i = 0; i < button.length; i++) {
     button[i].addEventListener("click", function () {
-      toDoForm()
+      showToDoForm()
       today()
     });
   }
