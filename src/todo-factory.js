@@ -1,10 +1,11 @@
-const ToDo = (title, dueDate, notes, priority) => {
+const ToDo = (title, notes, dueDate, priority, tag) => {
 
     return {
         title,
-        dueDate,
         notes,
-        priority
+        dueDate,
+        priority,
+        tag
     }
 }
 

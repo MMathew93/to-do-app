@@ -99,7 +99,7 @@ main {
 /*############
 TAB CONTENT
 ############*/
-.default-tab {
+.project {
     display: flex;
     align-items: center;
     padding: 1% 0 0 15%;
@@ -108,7 +108,7 @@ TAB CONTENT
 }
 
 .active,
-.default-tab:hover {
+.project:hover {
     background-color: white;
     cursor: pointer;
 }
@@ -183,32 +183,18 @@ TAB CONTENT
 New Added Projects
 ############*/
 
-.project-tab {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1% 0 0 15%;
-    font-size: 20px;
-    color: rgb(67, 70, 75);
-}
-
-.active,
-.project-tab:hover {
-    background-color: white;
-    cursor: pointer;
-}
-
 .projectTag {
     display: flex;
     align-items: center;
+    margin-right: auto;
 }
 
-#trash {
+.trash {
     color: black;
     margin-right: 1.5rem;
 }
 
-#trash:hover {
+.trash:hover {
     color: rgb(155, 17, 30);
 }
 

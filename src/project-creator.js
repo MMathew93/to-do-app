@@ -10,10 +10,15 @@ import {
 
 import {
   showToDoForm,
-  hideToDoForm,
-  createToDo,
-  today
+  todoTags
 } from './todo-creator'
+
+import {
+  todaySwitch,
+  nextWeek,
+  importantSwitch,
+  tagSwitch
+} from './tab-switch'
 
 const projectInitiator = function () {
   const projectInput = getElement('.projectInput')
@@ -37,7 +42,7 @@ const projectCreator = function () {
   const userInput = getId('userInput')
   const buttonTab = document.querySelector('.button-tab')
   const projectTab = createElement('div', {
-    class: `${userInput.value} project-tab select`
+    class: `${userInput.value} project`
   })
   const projectTag = createElement('div', {
     class: 'projectTag'
@@ -47,8 +52,7 @@ const projectCreator = function () {
     class: 'fas fa-calendar-check'
   })
   const trash = createElement('i', {
-    id: `${userInput.value}`,
-    class: 'fas fa-trash-alt'
+    class: 'fas fa-trash-alt trash'
   })
   trash.addEventListener('click', projectRemove)
   const p = createElement('p')
@@ -58,7 +62,7 @@ const projectCreator = function () {
   let y = [projectTag, trash]
   append(projectTab, y)
   leftBlock.insertBefore(projectTab, buttonTab)
-  //#############################################################################*/
+  /*/#############################################################################
   const rightBlock = getId('right-block')
   const projectDisplay = createElement('div', {
     class: `${userInput.value} display select hidden`
@@ -88,7 +92,14 @@ const projectCreator = function () {
   append(projectDisplay, a)
   let b = [projectDisplay]
   append(rightBlock, b)
-
+  */
+  let option = createElement('option', {
+    value: `${userInput.value}`
+  })
+  option.innerHTML = `${userInput.value}`
+  const tagNames = getId('tag-names')
+  tagNames.appendChild(option)
+  todoTags.push(`${userInput.value}`)
   projectInitiator()
   projectHighlight()
 
@@ -96,7 +107,6 @@ const projectCreator = function () {
   for (let i = 0; i < button.length; i++) {
     button[i].addEventListener("click", function () {
       showToDoForm()
-      today()
     });
   }
 }
@@ -104,24 +114,34 @@ const projectCreator = function () {
 
 const projectHighlight = function () {
   const leftBlock = getId('left-block')
-  const rightBlock = getId('right-block')
-  const getAllLeft = getElements(leftBlock, 'select')
-  const getAllRight = getElements(rightBlock, 'select')
+  const getAllLeft = getElements(leftBlock, 'project')
+  const projectTitle = document.querySelector('.project-title')
   for (let i = 0; i < getAllLeft.length; i++) {
     getAllLeft[i].addEventListener('click', function () {
       Array.prototype.forEach.call(getAllLeft, function (node) {
         node.classList.remove('active')
       });
       this.classList.add('active')
-      Array.prototype.forEach.call(getAllRight, function (node) {
-        node.classList.replace('active', 'hidden')
-      });
-      getAllRight[i].classList.replace('hidden', 'active')
+      projectTitle.innerHTML = this.classList[0]
     })
   }
 }
 
 projectHighlight()
+
+const todayTab = document.querySelector('.Today')
+todayTab.addEventListener('click', todaySwitch)
+
+const overviewTab = document.querySelector('.Week')
+overviewTab.addEventListener('click', nextWeek)
+
+const importantTab = document.querySelector('.Important')
+importantTab.addEventListener('click', importantSwitch)
+
+const newTabs = getElements(document, 'project')
+for (let i = 0; i < newTabs.length; i++) {
+  newTabs[i].addEventListener('click', tagSwitch)
+}
 
 const projectRemove = function (e) {
   let x = e.target.parentNode.classList[0]

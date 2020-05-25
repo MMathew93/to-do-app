@@ -10,7 +10,6 @@ import {
 import {
     showToDoForm,
     hideToDoForm,
-    today,
     createToDo
 } from './todo-creator'
 
@@ -26,7 +25,6 @@ const button = getElements(document, 'addToDo')
 for (let i = 0; i < button.length; i++) {
     button[i].addEventListener("click", function () {
         showToDoForm()
-        today()
     });
 }
 

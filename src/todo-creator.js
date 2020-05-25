@@ -9,12 +9,12 @@ import {
 import ToDo from './todo-factory'
 
 let allToDo = []
+let todoTags = ["none"]
 
 //toggles the form being shown and hidden for user submission
 const showToDoForm = function () {
     const formContainer = getElement('.form-container')
     removeClass(formContainer, 'hidden')
-    today()
 }
 
 const hideToDoForm = function () {
@@ -37,43 +37,35 @@ const createToDo = function () {
     const textarea = getElement('.textarea')
     const date = getId('date')
     const priority = getId('priority-levels')
-    let newToDo = ToDo(titleInput.value, date.value, textarea.value, priority.value);
-    const rightBlock = getId('right-block')
-    const toDoList = getElements(rightBlock, 'toDo-List')
-    for (let i = 0; i < toDoList.length; i++) {
-        if (toDoList[i].parentNode.classList.contains('active')) {
-            allToDo.push(newToDo)
-            render()
-        }
-        clear()
-        event.preventDefault();
-    }
+    let newToDo = ToDo(titleInput.value, textarea.value, date.value, priority.value);
+    allToDo.push(newToDo)
+    render()
+    clear()
+    event.preventDefault();
 }
 
 const render = function () {
-    const toDoList = document.querySelector('.toDo-List')
+    const toDoList = getElement('.toDo-List')
     let innerToDo = ''
-    for (let i = 0; i < allToDo.length; i++) {
-        innerToDo += `
-          <div class="toDo" id="${i}">
+    let x = allToDo.length - 1
+    //for (let i = 0; i < allToDo.length; i++) {
+    innerToDo += `
+          <div class="toDo" id="${x}">
               <div class="toDo-info">
                   <input type="checkbox" id="accept">
-                  <p class="item title">${allToDo[i].title}</p>
-                  <p class="item notes">${allToDo[i].notes}</p>
-                  <p class= "item date">${allToDo[i].dueDate}</p>
-                  <p class= "item priority">${allToDo[i].priority}</p>
-                  <button class= "toDo-delete">
-                    <i class= 'fas fa-trash-alt'></i>
-                  </button>
+                  <p class="item title">${allToDo[x].title}</p>
+                  <p class="item notes">${allToDo[x].notes}</p>
+                  <p class= "item date">${allToDo[x].dueDate}</p>
+                  <p class= "item priority">${allToDo[x].priority}</p>
+                  <i class= 'fas fa-trash-alt trash todo-delete'></i>
                 </div>
           </div>
           `;
-    }
-    
-    toDoList.innerHTML = innerToDo;
-    const toDoDelete = getElements(document, 'toDo-delete')
+    //}
+    toDoList.innerHTML += innerToDo;
+    const toDoDelete = getElements(document, 'todo-delete')
     for (let i = 0; i < toDoDelete.length; i++) {
-    toDoDelete[i].addEventListener("click", removeToDo)
+        toDoDelete[i].addEventListener("click", removeToDo)
     }
 }
 
@@ -86,24 +78,16 @@ const render = function () {
 }*/
 
 function removeToDo(e) {
-    let x= e.target.parentNode.parentNode.parentNode.getAttribute('id')
-    let xx= getId(x)
-    console.log(xx)
+    let x = e.target.parentNode.parentNode.getAttribute('id')
+    let xx = getId(x)
     xx.remove()
     allToDo.splice(x, 1)
-}
-
-//non-working auto date setter
-const today = function () {
-    var date = getId('today');
-    var today = new Date();
-    date.value = today.getFullYear().toString() + '-' + (today.getMonth() + 1).toString().padStart(2, 0) +
-        '-' + today.getDate().toString().padStart(2, 0);
 }
 
 export {
     showToDoForm,
     hideToDoForm,
     createToDo,
-    today
+    todoTags,
+    allToDo
 }

@@ -22,15 +22,15 @@
     </header>
     <main class="container-xl">
       <div id="left-block">
-        <div class="default-tab select active">
+        <div class="Today project active">
           <i id="today" class="fas fa-calendar-check"></i>
           <p>Today</p>
         </div>
-        <div class="default-tab select">
+        <div class="Week project">
           <i id="week" class="fas fa-calendar-alt"></i>
-          <p>Overview (Next 7 Days)</p>
+          <p>Next 7 Days</p>
         </div>
-        <div class="default-tab select">
+        <div class="Important project">
           <i id="star" class="fas fa-star"></i>
           <p>Important</p>
         </div>
@@ -46,31 +46,9 @@
         </form>
       </div>
       <div id="right-block">
-        <div class="display select active">
+        <div class="display">
           <h1 class="project-title">Today</h1>
           <div class="toDo-List"></div>
-          <div class="toDo-button">
-            <button class="addToDo">
-              <i class="fas fa-plus"></i>
-            </button>
-            <p>Add New Task</p>
-          </div>
-        </div>
-        <div class="display select hidden">
-          <h1 class="project-title">Overview (Next 7 Days)</h1>
-          <div class="toDo-List">
-          </div>
-          <div class="toDo-button">
-            <button class="addToDo">
-              <i class="fas fa-plus"></i>
-            </button>
-            <p>Add New Task</p>
-          </div>
-        </div>
-        <div class="display select hidden">
-          <h1 class="project-title">Important</h1>
-          <div class="toDo-List">
-          </div>
           <div class="toDo-button">
             <button class="addToDo">
               <i class="fas fa-plus"></i>
@@ -83,6 +61,13 @@
         <form id="todo-form">
           <label for="title">Title</label>
           <input type="text" name="title" id="title-input" class="to-doInput" value>
+          <br>
+          <div id="tags">
+            <label for="tag">Tag:</label>
+            <select id="tag-names" name="tag-names">
+              <option value="None" selected>None</option>
+            </select>
+          </div>
           <br>
           <div class="details">
             <div id="dueDate">
