@@ -10,7 +10,8 @@ import {
 import {
     showToDoForm,
     hideToDoForm,
-    createToDo
+    createToDo,
+    editToDo
 } from './todo-creator'
 
 //import Todo from './todo-factory'
@@ -37,6 +38,11 @@ submit.addEventListener('click', function () {
     hideToDoForm()
 });
 
+const edit = getElement('.edit')
+edit.addEventListener('click', function () {
+    editToDo()
+    hideToDoForm()
+})
 
 
 

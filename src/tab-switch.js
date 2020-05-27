@@ -2,8 +2,10 @@ import {
     allToDo
 } from './todo-creator'
 
+//Library for easier time and date converting
 const moment = require("moment")
 
+//hides or shows the todos that are affiliated with the current date
 const todaySwitch = function () {
     var date = moment().format('MM/DD/YYYY')
     var todos = document.getElementsByClassName('toDo')
@@ -16,6 +18,7 @@ const todaySwitch = function () {
     }
 }
 
+//hides or shows the todos that are due in the next 7 days
 const nextWeek = function () {
     var todos = document.getElementsByClassName('toDo')
     for (let i = 0; i < allToDo.length; i++) {
@@ -31,7 +34,7 @@ const nextWeek = function () {
     }
 }
 
-
+//hides or shows the todos that have been marked "High" priority
 const importantSwitch = function () {
     var todos = document.getElementsByClassName('toDo')
     for (let i = 0; i < allToDo.length; i++) {
@@ -43,7 +46,7 @@ const importantSwitch = function () {
     }
 }
 
-
+//hides or shows the todos associated with the user created tag ***********NOT WORKING*************
 const tagSwitch = function (e) {
     var todos = document.getElementsByClassName('toDo')
     for (let i = 0; i < allToDo.length; i++) {

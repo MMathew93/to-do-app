@@ -20,6 +20,7 @@ import {
   tagSwitch
 } from './tab-switch'
 
+//controls toggle of the user project creator button
 const projectInitiator = function () {
   const projectInput = getElement('.projectInput')
   const userInput = getId('userInput')
@@ -37,6 +38,7 @@ const projectInitiator = function () {
   }
 };
 
+//creates user project tabs 
 const projectCreator = function () {
   const leftBlock = getId('left-block')
   const userInput = getId('userInput')
@@ -54,6 +56,7 @@ const projectCreator = function () {
   const trash = createElement('i', {
     class: 'fas fa-trash-alt trash'
   })
+  //delete event listener for user created tabs
   trash.addEventListener('click', projectRemove)
   const p = createElement('p')
   p.innerHTML = userInput.value
@@ -62,37 +65,7 @@ const projectCreator = function () {
   let y = [projectTag, trash]
   append(projectTab, y)
   leftBlock.insertBefore(projectTab, buttonTab)
-  /*/#############################################################################
-  const rightBlock = getId('right-block')
-  const projectDisplay = createElement('div', {
-    class: `${userInput.value} display select hidden`
-  })
-  const projectTitle = createElement('h1', {
-    class: "project-title"
-  })
-  projectTitle.innerHTML = userInput.value
-  const toDoList = createElement('div', {
-    class: "toDo-List"
-  })
-  const toDoButton = createElement('div', {
-    class: "toDo-button"
-  })
-  const addToDo = createElement('button', {
-    class: "addToDo"
-  })
-  const add = createElement('i', {
-    class: "fas fa-plus"
-  })
-  const z= createElement('p') 
-  z.innerHTML= "Add New Task"
-  let zz=[addToDo, z]
-  addToDo.appendChild(add)
-  append(toDoButton, zz)
-  let a = [projectTitle, toDoList, toDoButton]
-  append(projectDisplay, a)
-  let b = [projectDisplay]
-  append(rightBlock, b)
-  */
+  //and also creates new tabs for todos
   let option = createElement('option', {
     value: `${userInput.value}`
   })
@@ -111,7 +84,7 @@ const projectCreator = function () {
   }
 }
 
-
+//Highlights tabs to show which is active
 const projectHighlight = function () {
   const leftBlock = getId('left-block')
   const getAllLeft = getElements(leftBlock, 'project')
@@ -129,20 +102,25 @@ const projectHighlight = function () {
 
 projectHighlight()
 
+//filters today todos when tab is selected
 const todayTab = document.querySelector('.Today')
 todayTab.addEventListener('click', todaySwitch)
 
+//filters the todos due in 7 days when selected
 const overviewTab = document.querySelector('.Week')
 overviewTab.addEventListener('click', nextWeek)
 
+//filters the important marked todos
 const importantTab = document.querySelector('.Important')
 importantTab.addEventListener('click', importantSwitch)
 
+//Filters to the todos with the associated tag **********CURRENTLY NOT WORKING**********
 const newTabs = getElements(document, 'project')
 for (let i = 0; i < newTabs.length; i++) {
   newTabs[i].addEventListener('click', tagSwitch)
 }
 
+//removes the user created project
 const projectRemove = function (e) {
   let x = e.target.parentNode.classList[0]
   const elements = getElements(document, x);
