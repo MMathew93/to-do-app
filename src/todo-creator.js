@@ -10,6 +10,7 @@ import ToDo from './todo-factory'
 
 let allToDo = []
 let todoTags = ["none"]
+var toDoPosition
 
 //toggles the form being shown and hidden for user submission
 const showToDoForm = function () {
@@ -108,6 +109,7 @@ const openEdit = function() {
     const date = getId('date')
     const priority = getId('priority-levels')
     const tag= getId('tag-names')
+    toDoPosition= this.parentNode.parentNode.id
     titleInput.value= this.parentNode.children[1].textContent
     textarea.value= this.parentNode.children[2].textContent
     date.value= this.parentNode.children[3].textContent
@@ -123,21 +125,23 @@ function editToDo() {
     const date = getId('date').value
     const priority = getId('priority-levels').value
     const tag= getId('tag-names').value
-    let x = allToDo.length - 1
-    console.log(allToDo[x].title)
     console.log(titleInput)
+    console.log(allToDo[toDoPosition].title)
     console.log(allToDo)
-    
-    /*
-    titleInput= allToDo.title
-    textarea= allToDo.notes
-    date= allToDo.dueDate
-    priority= allToDo.priority
-    tag= allToDo.tag
-    */
+    console.log(allToDo[toDoPosition].title.value)
+    allToDo[toDoPosition].title= titleInput
+    allToDo[toDoPosition].notes= textarea
+    allToDo[toDoPosition].dueDate= date
+    allToDo[toDoPosition].priority= priority
+    allToDo[toDoPosition].tag= tag
+    allToDo[toDoPosition].title.innerHTML = titleInput
+    allToDo[toDoPosition].notes.innerHTML = textarea
+    allToDo[toDoPosition].dueDate.innerHTML = date
+    allToDo[toDoPosition].priority.innerHTML = priority
+    allToDo[toDoPosition].tag.innerHTML = tag
+
     hideToDoForm()
 }
-
 
 
 export {
