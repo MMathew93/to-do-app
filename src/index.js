@@ -39,10 +39,7 @@ submit.addEventListener('click', function () {
 });
 
 const edit = getElement('.edit')
-edit.addEventListener('click', function () {
-    editToDo()
-    hideToDoForm()
-})
+edit.addEventListener('click', editToDo)
 
 
 

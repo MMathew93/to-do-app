@@ -44,7 +44,7 @@ const createToDo = function () {
     const textarea = getElement('.textarea')
     const date = getId('date')
     const priority = getId('priority-levels')
-    const tag= getId('tag-names')
+    const tag = getId('tag-names')
     let newToDo = ToDo(titleInput.value, textarea.value, date.value, priority.value, tag.value);
     allToDo.push(newToDo)
     render()
@@ -57,7 +57,7 @@ const render = function () {
     let innerToDo = ''
     let x = allToDo.length - 1
     innerToDo += `
-          <div class="toDo" id="${x}">
+          <div class="toDo" id="${allToDo[x].title}">
               <div class="toDo-info">
                   <input type="checkbox" id="accept">
                   <p class="item title">${allToDo[x].title}</p>
@@ -98,7 +98,7 @@ function removeToDo(e) {
 }
 
 //when user hits edit on actual object
-const openEdit = function() {
+const openEdit = function () {
     showToDoForm()
     const hiddenEdit = getElement('.edit')
     removeClass(hiddenEdit, 'hidden')
@@ -108,13 +108,13 @@ const openEdit = function() {
     const textarea = getElement('.textarea')
     const date = getId('date')
     const priority = getId('priority-levels')
-    const tag= getId('tag-names')
-    toDoPosition= this.parentNode.parentNode.id
-    titleInput.value= this.parentNode.children[1].textContent
-    textarea.value= this.parentNode.children[2].textContent
-    date.value= this.parentNode.children[3].textContent
-    priority.value= this.parentNode.children[4].textContent
-    tag.value= this.parentNode.children[5].textContent
+    const tag = getId('tag-names')
+    toDoPosition = allToDo.findIndex(x => x.title)
+    titleInput.value = this.parentNode.children[1].textContent
+    textarea.value = this.parentNode.children[2].textContent
+    date.value = this.parentNode.children[3].textContent
+    priority.value = this.parentNode.children[4].textContent
+    tag.value = this.parentNode.children[5].textContent
 }
 
 
@@ -124,22 +124,12 @@ function editToDo() {
     const textarea = getElement('.textarea').value
     const date = getId('date').value
     const priority = getId('priority-levels').value
-    const tag= getId('tag-names').value
-    console.log(titleInput)
-    console.log(allToDo[toDoPosition].title)
-    console.log(allToDo)
-    console.log(allToDo[toDoPosition].title.value)
-    allToDo[toDoPosition].title= titleInput
-    allToDo[toDoPosition].notes= textarea
-    allToDo[toDoPosition].dueDate= date
-    allToDo[toDoPosition].priority= priority
-    allToDo[toDoPosition].tag= tag
-    allToDo[toDoPosition].title.innerHTML = titleInput
-    allToDo[toDoPosition].notes.innerHTML = textarea
-    allToDo[toDoPosition].dueDate.innerHTML = date
-    allToDo[toDoPosition].priority.innerHTML = priority
-    allToDo[toDoPosition].tag.innerHTML = tag
-
+    const tag = getId('tag-names').value
+    const todo = createToDo(titleInput, textarea, date, priority, tag);
+    let x = allToDo[toDoPosition].title
+    let xx = getId(x)
+    xx.remove()
+    allToDo.splice(toDoPosition, 1)
     hideToDoForm()
 }
 
